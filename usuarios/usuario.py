@@ -1,5 +1,6 @@
 from base import conexion as conn
 from datetime import datetime 
+import hashlib as has
 
 conectar = conn.conexion()
 database = conectar[0]
@@ -14,8 +15,12 @@ class Usuario:
 
     def registrar(self):
         fecha = datetime.now()
+        #Cifrado contraseña
+        cifrado = has.sha256()
+        cifrado.update(self.clave.encode('utf8'))
+
         query = "insert into usuario values(null,%s,%s,%s,%s,%s) "
-        datos = (self.nombre, self.apellido,self.correo,self.clave,fecha)
+        datos = (self.nombre, self.apellido,self.correo,cifrado.hexdigest(),fecha)
 
         try:
             cursor.execute(query,datos)
@@ -30,5 +35,3 @@ class Usuario:
     def identificar(self):
         pass
 
-    git config --global user.email "you@example.com"
-  git config --global user.name "Your Name"
