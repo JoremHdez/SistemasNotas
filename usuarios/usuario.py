@@ -33,5 +33,15 @@ class Usuario:
         return result
 
     def identificar(self):
-        pass
+        query = "select * from usuario where correo = %s and clave = %s"
+        #Cifrado contraseña
+        cifrado = has.sha256()
+        cifrado.update(self.clave.encode('utf8'))
 
+        #DatoConsulta
+        usuario = (self.correo,cifrado.hexdigest()) 
+
+        cursor.execute(query,usuario)
+        result = cursor.fetchone()
+
+        return result

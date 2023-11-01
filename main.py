@@ -18,3 +18,15 @@ if opc == 1:
 elif opc == 2:
     print("Ingresa tu usuario y contraseña para poder ingresar")
     accion.login()
+
+    108
+    310
+    47
+    47
+    335
+    220
+    264
+    122
+    895
+    126
+    

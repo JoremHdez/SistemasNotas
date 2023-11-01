@@ -16,5 +16,22 @@ class Acciones:
             print("Regristo fallido")
 
     def login(self):
-        correo = input("Ingresa tu email")
-        clave = input("Ingresa una contraseña")
+        try:
+            correo = input("Ingresa tu email")
+            clave = input("Ingresa una contraseña")
+            
+            usuario = user.Usuario("","",correo,clave)
+            login = usuario.identificar()
+
+            if correo == login[3]:
+                print(f"Bienvenido usuario {login[1]}")
+                self.proximasAcciones(login)
+
+
+        except Exception as e:
+            #print(type(e))
+            #print(type(e).__name__)
+            print(f"Datos incorrectos")
+    
+    def proximasAcciones(self,usuario):
+        pass
