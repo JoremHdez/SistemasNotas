@@ -19,7 +19,7 @@ class Usuario:
         cifrado = has.sha256()
         cifrado.update(self.clave.encode('utf8'))
 
-        query = "insert into usuario values(null,%s,%s,%s,%s,%s) "
+        query = "insert into usuarios values(null,%s,%s,%s,%s,%s) "
         datos = (self.nombre, self.apellido,self.correo,cifrado.hexdigest(),fecha)
 
         try:
@@ -33,7 +33,7 @@ class Usuario:
         return result
 
     def identificar(self):
-        query = "select * from usuario where correo = %s and clave = %s"
+        query = "select * from usuarios where email = %s and clave = %s"
         #Cifrado contraseña
         cifrado = has.sha256()
         cifrado.update(self.clave.encode('utf8'))

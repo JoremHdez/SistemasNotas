@@ -25,7 +25,8 @@ class Acciones:
 
             if correo == login[3]:
                 print(f"Bienvenido usuario {login[1]}")
-                self.proximasAcciones(login)
+            
+            self.proximasAcciones(login)
 
 
         except Exception as e:
@@ -34,4 +35,31 @@ class Acciones:
             print(f"Datos incorrectos")
     
     def proximasAcciones(self,usuario):
-        pass
+        print("""
+            1.Crear Notas
+            2.Mostrar Notas 
+            3.Eliminar Notas
+            4.Salir
+
+        """)
+
+        opc = int(input("¿Qué quieres hacer?: "))
+        if opc == 1:
+            print("Crear")
+            nombre = input("Titulo: ")
+            print(nombre)
+            self.proximasAcciones(usuario)
+
+      
+        elif opc == 2:
+            print("Mostrar")
+            self.proximasAcciones(usuario)
+
+        elif opc == 3:
+            print("Eliminar")
+            self.proximasAcciones(usuario)
+        
+        elif opc == 4:
+            print(f"Ok {usuario[1]}, hasta pronto")
+            exit()
+        
